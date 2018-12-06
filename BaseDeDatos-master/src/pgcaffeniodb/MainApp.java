@@ -21,7 +21,7 @@ public class MainApp extends javax.swing.JFrame {
     //private final String USER = "usr210215739";
     //private final String PASS = "pw210215739";
     private final String USER = "postgres";
-    private final String PASS = "popo1212";
+    private final String PASS = "pamela";
     final private Database db;
 
     /**
@@ -364,13 +364,8 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void bPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPlayersActionPerformed
-//        final String sql = "SELECT cof_name AS Nombre, "
-//                + "sup_id AS Proveedor, "
-//                + "price AS Precio, "
-//                + "sales AS Ventas,"
-//                + "total AS Total FROM coffees ORDER BY cof_name";
 
-        final String sql = "SELECT * FROM player ORDER BY player_id";
+        final String sql = "SELECT * FROM public.player ORDER BY player_id";
 
         final String labels[] = {"ID", "Team", "First name",
             "Last name", "Gender", "Hometown", "Other details"};
@@ -379,7 +374,7 @@ public class MainApp extends javax.swing.JFrame {
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
 
-            modelo.addTableModelListener(new CoffeesTableListener(db));
+            modelo.addTableModelListener(new PlayerTableListener(db)); // ESTA ES LA QUE VAS A COPIAR ABAJO DE LA DE ARRIBA
 
             TableBrowser browser = new TableBrowser("Players", modelo);
             browser.setVisible(true);
@@ -408,11 +403,14 @@ public class MainApp extends javax.swing.JFrame {
     private void bTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTeamsActionPerformed
         final String sql = "SELECT * FROM team ORDER BY team_id";
         final String labels[] = {"ID", "Name", "Date created",
-            "Date disbanded", "Other details", "Date from", "Game played"};
+            "Date disbanded", "Other details", "Game played"};
         try {
             ResultSet rs = db.query(sql);
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
+
+            modelo.addTableModelListener(new TeamTableListener(db));
+
             TableBrowser browser = new TableBrowser("Teams", modelo);
             browser.setVisible(true);
             this.desktopPane.add(browser);
@@ -432,6 +430,9 @@ public class MainApp extends javax.swing.JFrame {
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
             TableBrowser browser = new TableBrowser("Proveedores", modelo);
+
+            modelo.addTableModelListener(new GameTableListener(db));
+
             browser.setVisible(true);
             this.desktopPane.add(browser);
 
@@ -447,6 +448,9 @@ public class MainApp extends javax.swing.JFrame {
             ResultSet rs = db.query(sql);
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
+
+            modelo.addTableModelListener(new LeaguesTableListener(db));
+
             TableBrowser browser = new TableBrowser("Leagues", modelo);
             browser.setVisible(true);
             this.desktopPane.add(browser);
@@ -483,6 +487,8 @@ public class MainApp extends javax.swing.JFrame {
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
             TableBrowser browser = new TableBrowser("Matches", modelo);
+            modelo.addTableModelListener(new MatchesTableListener(db));
+
             browser.setVisible(true);
             this.desktopPane.add(browser);
 
@@ -499,6 +505,9 @@ public class MainApp extends javax.swing.JFrame {
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
             TableBrowser browser = new TableBrowser("Rankings", modelo);
+
+            modelo.addTableModelListener(new RankingsTableListener(db));
+
             browser.setVisible(true);
             this.desktopPane.add(browser);
 
@@ -515,12 +524,16 @@ public class MainApp extends javax.swing.JFrame {
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
             TableBrowser browser = new TableBrowser("Played Matches", modelo);
+            
+            modelo.addTableModelListener(new P_matchesTableListener(db));
+            
+            
             browser.setVisible(true);
             this.desktopPane.add(browser);
 
         } catch (SQLException ex) {
 
-        }                                         
+        }
     }//GEN-LAST:event_bPlayed_MatchesActionPerformed
 
     private void bMatches_by_GamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMatches_by_GamesActionPerformed
@@ -531,6 +544,8 @@ public class MainApp extends javax.swing.JFrame {
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
             TableBrowser browser = new TableBrowser("Matches by Game", modelo);
+                        modelo.addTableModelListener(new M_byGameTableListener(db));
+
             browser.setVisible(true);
             this.desktopPane.add(browser);
 
@@ -539,13 +554,15 @@ public class MainApp extends javax.swing.JFrame {
         }        }//GEN-LAST:event_bMatches_by_GamesActionPerformed
 
     private void bGame_LeaguesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGame_LeaguesActionPerformed
-        final String sql = "SELECT * FROM game_have_leagues ORDER BY game_code";
+        final String sql = "SELECT * FROM games_have_leagues ORDER BY game_code";
         final String labels[] = {"League", "Game"};
         try {
             ResultSet rs = db.query(sql);
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
             TableBrowser browser = new TableBrowser("Game Leagues", modelo);
+                        modelo.addTableModelListener(new G_LeaguesTableListener(db));
+
             browser.setVisible(true);
             this.desktopPane.add(browser);
 
@@ -563,7 +580,7 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_iGameActionPerformed
 
     private void iLeagueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iLeagueActionPerformed
-        InsertLeagueDialog dialog =  new InsertLeagueDialog(this, db);
+        InsertLeagueDialog dialog = new InsertLeagueDialog(this, db);
         dialog.setVisible(true);
     }//GEN-LAST:event_iLeagueActionPerformed
 

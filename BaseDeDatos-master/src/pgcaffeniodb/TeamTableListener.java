@@ -16,11 +16,11 @@ import javax.swing.table.TableModel;
  *
  * @author rnavarro
  */
-public class CoffeesTableListener implements TableModelListener  {
+public class TeamTableListener implements TableModelListener  {
     
     private final Database db;
     
-    public CoffeesTableListener(Database d) {
+    public TeamTableListener (Database d) {
         super();
         db = d;
     }
@@ -41,7 +41,9 @@ public class CoffeesTableListener implements TableModelListener  {
         String colName = modelo.getColumnName(column);
         String colSQLName = modelo.getSQLColumnName(column);        
         String sql = String.format(
-                "UPDATE coffees SET %s = %s WHERE COF_NAME = \'%s\'",
+                
+                "UPDATE team SET %s = \'%s\' WHERE team_id = \'%s\'",
+                
                 colSQLName,
                 modelo.getValueAt(row, column),
                 modelo.getValueAt(row, 0));
