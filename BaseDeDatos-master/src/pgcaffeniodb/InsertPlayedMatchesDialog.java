@@ -72,7 +72,7 @@ public class InsertPlayedMatchesDialog extends javax.swing.JDialog {
         iTeams_Names2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Agregar Café");
+        setTitle("Agregar Partido Jugado");
         setResizable(false);
 
         okButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

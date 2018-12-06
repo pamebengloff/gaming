@@ -48,7 +48,7 @@ public class InsertGameDialog extends javax.swing.JDialog {
         iOther_Details = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Agregar Café");
+        setTitle("Agregar Juego");
         setResizable(false);
 
         okButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

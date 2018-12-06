@@ -71,7 +71,7 @@ public class InsertTeamDialog extends javax.swing.JDialog {
         iID = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Agregar Café");
+        setTitle("Agregar Equipo");
         setResizable(false);
 
         okButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

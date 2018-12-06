@@ -41,7 +41,7 @@ public class P_matchesTableListener implements TableModelListener  {
         String colName = modelo.getColumnName(column);
         String colSQLName = modelo.getSQLColumnName(column);        
         String sql = String.format(
-                "UPDATE played_matches SET %s = %s WHERE game_code = \'%s\'",
+                "UPDATE played_matches SET %s = \'%s\' WHERE team_1_id = \'%s\'",
                 colSQLName,
                 modelo.getValueAt(row, column),
                 modelo.getValueAt(row, 0));

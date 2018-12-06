@@ -75,7 +75,7 @@ public class InsertGameLeaguesDialog extends javax.swing.JDialog {
         iGame_Code = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Agregar Café");
+        setTitle("Agregar Liga de Juego");
         setResizable(false);
 
         okButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

@@ -429,7 +429,7 @@ public class MainApp extends javax.swing.JFrame {
             ResultSet rs = db.query(sql);
 
             JDBCTableAdpater modelo = new JDBCTableAdpater(rs, labels);
-            TableBrowser browser = new TableBrowser("Proveedores", modelo);
+            TableBrowser browser = new TableBrowser("Games", modelo);
 
             modelo.addTableModelListener(new GameTableListener(db));
 

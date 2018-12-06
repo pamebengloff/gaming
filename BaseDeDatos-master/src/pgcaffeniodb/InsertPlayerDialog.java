@@ -73,7 +73,7 @@ public class InsertPlayerDialog extends javax.swing.JDialog {
         iGender_Sel = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Agregar Café");
+        setTitle("Agregar Jugador");
         setResizable(false);
 
         okButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
